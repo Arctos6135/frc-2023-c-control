@@ -1,22 +1,22 @@
 #include"control.h"
 #include<stdio.h>
 
-target t;
-directive d;
+tgt_ t;
+dct_ d;
 
 int main()
 {
-	t = malloc(sizeof(target));
-	d = malloc(sizeof(directive));
-	
-	printf("Distance of target: ");
-	scanf("%lf", &(t->d));
-	printf("Height of target: ");
-	scanf("%lf", &(t->h));
+	t = malloc(sizeof(tgt_));
+	d = malloc(sizeof(dct_));
+
+	printf("Distance of tgt_: ");
+	scanf("%lf", &(t->x));
+	printf("Height of tgt_: ");
+	scanf("%lf", &(t->y));
 
 	aim(t, d);
 
-	printf("Angle: %lf\nPower: %lf\n", d->a, d->p);
+	printf("Angle: %lf\nPower: %lf\n", d->ang, d->pow);
 
 	return 0;
 }

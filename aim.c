@@ -1,10 +1,10 @@
 #include"control.h"
 
-void aim(target _t, directive _d)
+uint8_t aim(tgt_ _t, dct_ _d)
 {
-	double th = atan((sqrt(4*_t->d*_t->d+_t->h)+_t->h)/2/_t->d);
-	double mg = _t->d*_t->d/cos(th)/(2*_t->d*sin(th)-_t->h*cos(th));
+	double th = atan((sqrt(4*_t->x*_t->x+_t->y)+_t->y)/2/_t->x);
+	double mg = _t->x*_t->x/cos(th)/(2*_t->x*sin(th)-_t->y*cos(th));
 
-	_d->a = th;
-	_d->p = mg;
+	_d->ang = th;
+	_d->pow = mg;
 }

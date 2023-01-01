@@ -1,5 +1,6 @@
 #include<math.h>
 #include<stdlib.h>
+#include<unistd.h>
 
 // a repeated action
 typedef uint8_t(*act_)(dct_);

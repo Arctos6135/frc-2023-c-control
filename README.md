@@ -15,5 +15,3 @@ in the hope that they may benefit those making the upgrade to **C**.
 - A circuit diagram for said implementation:
 
 	*IMAGE*
-
-

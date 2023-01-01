@@ -18,9 +18,9 @@ uint8_t start()
 
 uint8_t run()
 {
-	o = 0;
-
-	while ((++c)->imp) if (d==e) return 1;
+	while ((++c)->imp)
+		if (d==e)
+			return 1;
 
 	if (o = rcv(c, t))
 		return o;
@@ -29,9 +29,5 @@ uint8_t run()
 		if (i->imp < c->imp)
 			c = i;
 
-	if (o =   c->a(d)) return o;
-	if (o = aim(t, d)) return o;
-	if (o =    dct(d)) return o;
-
-	return o;
+	return c->a(d) ?: aim(t, d) ?: dct(d);
 }

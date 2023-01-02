@@ -8,12 +8,11 @@ dct_ d;
 
 uint8_t start()
 {
-	o = 0;
 	c = (e = malloc(sizeof(com_)*(C_LN+1))) - C_LN;
 	t = malloc(sizeof(tgt_));
 	d = malloc(sizeof(dct_));
 
-	return o;
+	return auton();
 }
 
 uint8_t run()

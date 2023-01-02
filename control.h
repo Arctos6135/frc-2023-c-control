@@ -2,6 +2,12 @@
 #include<stdlib.h>
 #include<unistd.h>
 
+#include"run.c"
+
+#ifndef R_FQ
+#define R_FQ 250
+#endif
+
 // a repeated action
 typedef uint8_t(*act_)(dct_);
 
@@ -23,9 +29,6 @@ typedef struct {
 	uint8_t imp;
 } *com_;
 
-// prepares a projectile launch
-uint8_t aim(tgt_, dct_);
-
 // directs the robot
 uint8_t dct(dct_);
 
@@ -35,5 +38,11 @@ uint8_t start();
 // runs the robot, using user-provided rcv.
 uint8_t run();
 
+// execute at end of start
+extern uint8_t auton();
+
+// prepares a projectile launch
+extern uint8_t aim(tgt_, dct_);
+
 // receive input
-uint8_t rcv(com_, tgt_);
+extern uint8_t rcv(com_, tgt_);

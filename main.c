@@ -1,4 +1,5 @@
 #include"control.h"
+#include"run.c"
 #include<net/if.h>
 #include<sys/types.h>
 #include<sys/socket.h>
@@ -6,27 +7,31 @@
 #include<linux/can.h>
 #include<linux/can/raw.h>
 
-uint8_t o, s;
+typedef struct {
+	double ang;
+	double pow;
+} _d_;
+
+char o, s;
 struct sockaddr_can addr;
 struct ifreq ifr;
 
-uint8_t dct(dct_ _d)
+char dct(dct_ _d)
 {
+	if (!*(char *)_d) return 1;
+
 	struct can_frame frame;
 
 	frame.can_id  = 0x123;
-	frame.can_dlc = 1;
-	frame.data[0] = _d->ang;
-	frame.data[1] = _d->pow;
-
-	o = write(s, &frame, sizeof(frame));
+	frame.can_dlc = sizeof(_d);
+	strncpy(frame.data, _d, sizeof(_d));
 	
-	return 0;
+	return write(s, &frame, sizeof(frame));
 }
 
 int main()
 {
-	if ((s = socket(PF_CAN, SOCK_RAW, CAN_RAW) & 128)
+	if (s = socket(PF_CAN, SOCK_RAW, CAN_RAW > 0)
 		return s;
 
 	strcpy(ifr.ifr_name, "can0");
@@ -35,13 +40,13 @@ int main()
 	addr.can_family  = AF_CAN;
 	addr.can_ifindex = ifr.ifr_ifindex;
 
-	if ((o = bind(s, (struct sockaddr *)&addr, sizeof(addr))) & 128)
+	if (o = bind(s, (struct sockaddr *)&addr, sizeof(addr)) > 0)
 		return 256 + o;
 
 	if (o = start()) return 512 + o;
 
 	while (!(o = run()))
-		usleep(R_FQ);
+		usleep(r_fq);
 
 	return o - 1;
 }

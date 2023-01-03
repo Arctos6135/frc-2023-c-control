@@ -31,18 +31,18 @@ gcc main.o demo.o
 
 ## EXTERNAL FUNCTIONS
 
-This library expects three external functions to be provided:
-`aim` `rcv` and `auton`.
-These, respectively, should be a series of commands,
-returning 0 on success,
-and a method to assign commands and targets,
-taking the addresses for it's ouput,
-and returning 0 on success.
+This library expects two external functions to be provided: `rcv` and `init`.
+`init` is run once, at the end of `setup`.
+`rcv` is run every `r_fq` milliseconds, a constant which must be provided,
+and should assign a command to the robot.
+If this command assigns a power of 0, the program will terminate with `0`.
+Any nonzero exit codes from either of these functions,
+will cause the termination with said code.
 
 ## OPERATION
 
 `start` creates the connection with the robot,
-and returns the result of `auton` provided.
+and returns the result of `init` provided.
 
 `run` is repeatedly executed every `R_FQ` microseconds,
 and will execute the command with highest importance,
@@ -54,3 +54,7 @@ as are targets.
 The provided `main` function sets up a socket connection
 with the *Linux* `socketcan` library.
 Those not using *Linux* should [install it now](https://www.linux.org/pages/download/).
+
+## STRUCTURE
+
+A directive has some number of 

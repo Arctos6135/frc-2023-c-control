@@ -1,21 +1,15 @@
-#include<math.h>
 #include<stdlib.h>
 #include<unistd.h>
-
-#include"run.c"
-
-#ifndef R_FQ
-#define R_FQ 250
-#endif
+#include<string.h>
 
 // a repeated action
-typedef uint8_t(*act_)(dct_);
+typedef char(*act_)(tgt_, dct_);
+
+// externally defined base fir directive
+struct _d_;
 
 // a motor command before packaging for CAN
-typedef struct {
-	double ang;
-	double pow;
-} *dct_;
+typedef struct _d_ *dct_;
 
 // parsed information from controller input
 typedef struct {
@@ -26,23 +20,23 @@ typedef struct {
 // a motor command
 typedef struct {
 	act_ a;
-	uint8_t imp;
+	char imp;
 } *com_;
 
 // directs the robot
-uint8_t dct(dct_);
+char dct(dct_);
 
 // set up robot, autonomously
-uint8_t start();
+char start();
 
 // runs the robot, using user-provided rcv.
-uint8_t run();
+char run();
+
+// frequency to call rcv
+extern const char r_fq;
 
 // execute at end of start
-extern uint8_t auton();
-
-// prepares a projectile launch
-extern uint8_t aim(tgt_, dct_);
+extern char init();
 
 // receive input
-extern uint8_t rcv(com_, tgt_);
+extern char rcv(com_, tgt_);

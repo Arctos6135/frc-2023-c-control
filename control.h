@@ -2,21 +2,17 @@
 #include<unistd.h>
 #include<string.h>
 
+struct _d_;
+struct _t_;
+
 // a repeated action
 typedef char (*act_)(tgt_, dct_);
-
-// externally defined base fir directive
-struct _d_;
 
 // a motor command before packaging for CAN
 typedef struct _d_ *dct_;
 
 // parsed information from controller input
-typedef struct {
-	double x;
-	double y;
-} *tgt_;
-
+typedef struct _t_ *tgt_;
 // a motor command
 typedef struct {
 	act_ a;

@@ -6,7 +6,8 @@ in the hope that they may benefit those making the reformation to **C**.
 - The basic mathematics behind a projectile launch mechanism,
 	presuming said mechanism is compliant with the following:
 
-	**Work must be proportional to power.**
+	- **Work  must be proportional to power.**
+	- **Angle must be proportional to power.**
 
 - A boilerplate for tasks a robot must complete once, and multiple times.
 - A straightforward methor for receiving and executing tasks for the robot.
@@ -57,4 +58,19 @@ Those not using *Linux* should [install it now](https://www.linux.org/pages/down
 
 ## STRUCTURE
 
-A directive has some number of 
+- A directive is a series of bytes to be transmitted.
+	In the provided demonstration,
+	these are the power level for two motors:
+	both 8 byte floating point numbers.
+	A target is a series of bytes which are received.
+	In the provided demonstration,
+	these are the distance and height of a goal:
+	both 8 byte floating point numbers.
+- That `sizeof(dct_) == sizeof(tgt_)` is entirely coincidental.
+- An action is a function pointer, taking the current target,
+	and the current directive
+- The outcome of an action may be returned via the new target,
+	allowing a previously issued command to recognise completion.
+- A command is an action and a level of importance.
+	An command with importance of `0` will be ignored;
+	time need not be wasted providing a function which does nothing,

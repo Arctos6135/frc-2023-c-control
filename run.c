@@ -28,5 +28,5 @@ char run()
 		if (i->imp < c->imp)
 			c = i;
 
-	return c->a(t, d) ?: c->imp = dct(d);
+	return (o = c->a(t, d)) ? (c->imp = o - 1) : dct(d);
 }

@@ -9,6 +9,11 @@ struct _d_ {
 	double pow;
 };
 
+struct _t_ {
+	double x;
+	double y;
+};
+
 char init()
 {
 	struct _d_ l[31];
@@ -46,7 +51,7 @@ char init()
 	l[30] = (struct _d_){.0, .0};
 
 	char o;
-	for (dct_ i = l; i->pow; i++)
+	for (dct_ i = l; i++->pow; usleep(r_fq))
 		if (o = dct(i))
 			return o;
 
@@ -63,7 +68,7 @@ char rcv(com_ _c, tgt_ _t)
 	scanf("%lf", &(_t->y));
 
 	_c->a = aim;
-	_c->imp = 1;
+	_c->imp = _t->y ? 1 : 0;
 
 	return 0;
 }

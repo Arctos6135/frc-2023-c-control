@@ -18,7 +18,7 @@ struct ifreq ifr;
 
 char dct(dct_ _d)
 {
-	if (!*(char *)_d) return 1;
+	if (!*(long *)_d) return 1;
 
 	struct can_frame frame;
 

@@ -3,7 +3,7 @@
 #include<string.h>
 
 // a repeated action
-typedef char(*act_)(tgt_, dct_);
+typedef char (*act_)(tgt_, dct_);
 
 // externally defined base fir directive
 struct _d_;

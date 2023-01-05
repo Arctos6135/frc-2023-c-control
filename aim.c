@@ -1,4 +1,4 @@
-#include"control.h"
+#include"demo.h"
 #include<math.h>
 
 // prepares a projectile launch

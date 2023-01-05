@@ -2,7 +2,7 @@
 #include"aim.c"
 #include<stdio.h>
 
-char r_fq = 250;
+char r_fq = 200;
 
 struct _d_ {
 	double ang;
@@ -51,7 +51,7 @@ char init()
 	l[30] = (struct _d_){.0, .0};
 
 	char o;
-	for (dct_ i = l; i++->pow; usleep(r_fq))
+	for (dct_ i = l; i++->pow; usleep(500000))
 		if (o = dct(i))
 			return o;
 

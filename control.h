@@ -28,7 +28,7 @@ char start();
 // runs the robot, using user-provided rcv.
 char run();
 
-// frequency to call rcv
+// frequency at which to call rcv
 extern const char r_fq;
 
 // execute at end of start

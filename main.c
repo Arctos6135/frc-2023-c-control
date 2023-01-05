@@ -7,11 +7,6 @@
 #include<linux/can.h>
 #include<linux/can/raw.h>
 
-typedef struct {
-	double ang;
-	double pow;
-} _d_;
-
 char o, s;
 struct sockaddr_can addr;
 struct ifreq ifr;
